@@ -47,4 +47,16 @@ public class EmpresaDAO {
             return null;
         }
     }
+    
+    public void excluir (int id) {
+        String sql = "DELETE FROM empresa WHERE id = ?";
+        
+        try {
+            PreparedStatement stmt = this.conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+            stmt.execute();
+        } catch (Exception e) {
+            System.out.println("Erro ao excluir empresa: " + e.getMessage());
+        }
+    }
 }
