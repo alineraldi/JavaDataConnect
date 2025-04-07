@@ -32,15 +32,19 @@ public class FormEmpresa extends javax.swing.JFrame {
         lblId = new javax.swing.JLabel();
         lblNomeEmpresa = new javax.swing.JLabel();
         lblAreaAtuacao = new javax.swing.JLabel();
-        lblPesquisa = new javax.swing.JLabel();
+        lblPesquisaId = new javax.swing.JLabel();
+        lblPesquisaNome = new javax.swing.JLabel();
         txtNomeEmpresa = new javax.swing.JTextField();
-        txtPesquisa = new javax.swing.JTextField();
+        txtPesquisaNome = new javax.swing.JTextField();
         cmbArea = new javax.swing.JComboBox<>();
         btnSalvar = new javax.swing.JButton();
-        btnPesquisa = new javax.swing.JButton();
+        btnPesquisarId = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
+        btnEmpCadast = new javax.swing.JButton();
         txtId = new javax.swing.JTextField();
+        txtPesquisaId = new javax.swing.JTextField();
+        btnPesquisarNome = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -60,12 +64,15 @@ public class FormEmpresa extends javax.swing.JFrame {
         lblAreaAtuacao.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblAreaAtuacao.setText("Área de Atuação:");
 
-        lblPesquisa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblPesquisa.setText("Pesquisar empresa por ID:");
+        lblPesquisaId.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblPesquisaId.setText("Pesquisar empresa por ID:");
+
+        lblPesquisaNome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblPesquisaNome.setText("Pesquisar empresa por nome:");
 
         txtNomeEmpresa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        txtPesquisa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtPesquisaNome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         cmbArea.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbArea.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administração", "Contabilidade", "Medicina", "Informática", "Outros" }));
@@ -78,11 +85,11 @@ public class FormEmpresa extends javax.swing.JFrame {
             }
         });
 
-        btnPesquisa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnPesquisa.setText("Pesquisar");
-        btnPesquisa.addActionListener(new java.awt.event.ActionListener() {
+        btnPesquisarId.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnPesquisarId.setText("Pesquisar");
+        btnPesquisarId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisaActionPerformed(evt);
+                btnPesquisarIdActionPerformed(evt);
             }
         });
 
@@ -96,6 +103,26 @@ public class FormEmpresa extends javax.swing.JFrame {
             }
         });
 
+        btnEmpCadast.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnEmpCadast.setText("Empresas Cadastradas");
+        btnEmpCadast.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEmpCadastActionPerformed(evt);
+            }
+        });
+
+        txtId.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        txtPesquisaId.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        btnPesquisarNome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnPesquisarNome.setText("Pesquisar");
+        btnPesquisarNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarNomeActionPerformed(evt);
+            }
+        });
+
         btnEditar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnEditar.setText("Editar");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -104,52 +131,55 @@ public class FormEmpresa extends javax.swing.JFrame {
             }
         });
 
-        txtId.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnSalvar, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblAreaAtuacao, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblNomeEmpresa, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addComponent(btnPesquisarNome))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblEmpresa)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPesquisarId))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblAreaAtuacao, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(lblNomeEmpresa, javax.swing.GroupLayout.Alignment.TRAILING))
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(txtNomeEmpresa)
                                             .addComponent(cmbArea, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                        .addGap(15, 15, 15)
-                                        .addComponent(btnEditar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnExcluir))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(132, 132, 132)
-                                .addComponent(lblId)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(95, 95, 95))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(lblPesquisaId)
+                                            .addComponent(lblId)
+                                            .addComponent(lblPesquisaNome))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtPesquisaId, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtPesquisaNome, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(35, 35, 35)))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(41, 41, 41)
-                                .addComponent(lblPesquisa)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 58, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblEmpresa)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPesquisa)))
-                .addGap(38, 38, 38))
+                                .addComponent(btnSalvar)
+                                .addGap(15, 15, 15)
+                                .addComponent(btnEditar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnExcluir)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnEmpCadast)
+                                .addGap(30, 30, 30)))))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,10 +188,15 @@ public class FormEmpresa extends javax.swing.JFrame {
                 .addComponent(lblEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPesquisa)
-                    .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPesquisa))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                    .addComponent(btnPesquisarId)
+                    .addComponent(txtPesquisaId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPesquisaId))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPesquisaNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPesquisarNome)
+                    .addComponent(lblPesquisaNome))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblId))
@@ -177,8 +212,9 @@ public class FormEmpresa extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
                     .addComponent(btnExcluir)
+                    .addComponent(btnEmpCadast)
                     .addComponent(btnEditar))
-                .addContainerGap())
+                .addGap(12, 12, 12))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -216,19 +252,19 @@ public class FormEmpresa extends javax.swing.JFrame {
         txtNomeEmpresa.setText("");
     }//GEN-LAST:event_btnSalvarActionPerformed
 
-    private void btnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaActionPerformed
-        int idPesquisa = Integer.parseInt(txtPesquisa.getText());
-        
+    private void btnPesquisarIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarIdActionPerformed
+        int idPesquisa = Integer.parseInt(txtPesquisaNome.getText());
+
         EmpresaDAO empresaDAO = new EmpresaDAO();
-        Empresa empresa = empresaDAO.getEmpresa(idPesquisa);
-        
+        Empresa empresa = (Empresa) empresaDAO.getEmpresa(idPesquisa);
+
         if (empresa == null) {
             JOptionPane.showMessageDialog(this, "Curso não encontrado!");
         } else {
             txtNomeEmpresa.setText(empresa.getNomeEmpresa());
             cmbArea.setSelectedItem(empresa.getAreaAtuacao());
         }
-    }//GEN-LAST:event_btnPesquisaActionPerformed
+    }//GEN-LAST:event_btnPesquisarIdActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         int id = Integer.parseInt(txtId.getText());
@@ -240,8 +276,47 @@ public class FormEmpresa extends javax.swing.JFrame {
         txtNomeEmpresa.setText("");
     }//GEN-LAST:event_btnExcluirActionPerformed
 
+    private void btnEmpCadastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpCadastActionPerformed
+        //Vinculando o formRelatorioEmpresas ao botão Empresas Cadastradas
+        FormRelatorioEmpresas fre = new FormRelatorioEmpresas();
+        //Mostrando o form quando clicar no botão
+        fre.setVisible(true);
+    }//GEN-LAST:event_btnEmpCadastActionPerformed
+
+    private void btnPesquisarNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarNomeActionPerformed
+            
+        
+        String nomepesquisa = txtPesquisaNome.getText();
+
+        EmpresaDAO empresaDAO = new EmpresaDAO();
+        Empresa empresa = empresaDAO.getEmpresaNome(nomepesquisa);
+
+        if (empresa == null) {
+            JOptionPane.showMessageDialog(this, "Empresa não encontrado!");
+        } else {
+            txtId.setText(String.valueOf(empresa.getId()));
+            txtNomeEmpresa.setText(empresa.getNomeEmpresa());
+            cmbArea.setSelectedItem(empresa.getAreaAtuacao());
+        }
+    }//GEN-LAST:event_btnPesquisarNomeActionPerformed
+
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // TODO add your handling code here:
+        //Pegar o código que o usuário digitou no campo de texto, converte para inteiro e salvar da variavel id
+        int id = Integer.parseInt(txtId.getText());
+        String nomeempresa = txtNomeEmpresa.getText();
+        String areadeatuacao = cmbArea.getSelectedItem().toString();
+
+        Empresa empresa = new Empresa();
+        empresa.setId(id);
+        empresa.setNomeEmpresa(nomeempresa);
+        empresa.setAreaAtuacao(areadeatuacao);
+
+        EmpresaDAO empresaDAO = new EmpresaDAO();
+        empresaDAO.editar(empresa);
+
+        //limpando os campos
+        txtId.setText("");
+        txtNomeEmpresa.setText("");
     }//GEN-LAST:event_btnEditarActionPerformed
 
     /**
@@ -281,8 +356,10 @@ public class FormEmpresa extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEmpCadast;
     private javax.swing.JButton btnExcluir;
-    private javax.swing.JButton btnPesquisa;
+    private javax.swing.JButton btnPesquisarId;
+    private javax.swing.JButton btnPesquisarNome;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cmbArea;
     private javax.swing.JPanel jPanel1;
@@ -292,9 +369,11 @@ public class FormEmpresa extends javax.swing.JFrame {
     private javax.swing.JLabel lblEmpresa;
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblNomeEmpresa;
-    private javax.swing.JLabel lblPesquisa;
+    private javax.swing.JLabel lblPesquisaId;
+    private javax.swing.JLabel lblPesquisaNome;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNomeEmpresa;
-    private javax.swing.JTextField txtPesquisa;
+    private javax.swing.JTextField txtPesquisaId;
+    private javax.swing.JTextField txtPesquisaNome;
     // End of variables declaration//GEN-END:variables
 }
