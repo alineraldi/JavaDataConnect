@@ -29,12 +29,11 @@ public class EmpresaDAO {
             }
     }
     
-    public List<Empresa> getEmpresa(int idPesquisa) {
-        String sql = "SELECT * FROM empresa WHERE id = ?";
+    public List<Empresa> getEmpresa() {
+        String sql = "SELECT * FROM empresa";
 
         try {
             PreparedStatement stmt = this.conn.prepareStatement(sql);
-            stmt.setInt(1, idPesquisa); // agora o parâmetro é usado
             ResultSet rs = stmt.executeQuery();
 
             List<Empresa> listaEmpresas = new ArrayList<>();

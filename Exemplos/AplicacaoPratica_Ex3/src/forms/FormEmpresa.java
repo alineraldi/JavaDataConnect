@@ -256,7 +256,7 @@ public class FormEmpresa extends javax.swing.JFrame {
         int idPesquisa = Integer.parseInt(txtPesquisaNome.getText());
 
         EmpresaDAO empresaDAO = new EmpresaDAO();
-        Empresa empresa = (Empresa) empresaDAO.getEmpresa(idPesquisa);
+        Empresa empresa = (Empresa) empresaDAO.getEmpresa();
 
         if (empresa == null) {
             JOptionPane.showMessageDialog(this, "Curso não encontrado!");

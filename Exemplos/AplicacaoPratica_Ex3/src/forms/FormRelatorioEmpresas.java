@@ -12,10 +12,9 @@ import javax.swing.table.TableRowSorter;
 public class FormRelatorioEmpresas extends javax.swing.JFrame {
 
 private void preencherTabela() {
-    int idPesquisa = 1; // exemplo: você pode alterar esse ID para o que quiser pesquisar
 
     EmpresaDAO empresaDAO = new EmpresaDAO();
-    List<Empresa> listaEmpresas = empresaDAO.getEmpresa(idPesquisa);
+    List<Empresa> listaEmpresas = empresaDAO.getEmpresa();
 
     DefaultTableModel tabelaEmpresas = (DefaultTableModel) tblEmpresas.getModel();
     tabelaEmpresas.setNumRows(0);

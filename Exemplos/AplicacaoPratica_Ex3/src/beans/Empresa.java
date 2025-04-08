@@ -29,5 +29,10 @@ public class Empresa {
         this.areaAtuacao = areaAtuacao;
     }  
     
+    @Override
+    public String toString()
+    {
+        return this.nomeEmpresa;
+    }
     
 }
