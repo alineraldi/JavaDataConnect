@@ -20,6 +20,66 @@ public class FuncionarioDAO {
         this.conexao = new Conexao();
         this.conn = this.conexao.getConexao();
         }
+    
+    
+    public Funcionario getFuncionario(int id) {
+        Funcionario funcionario = null;
+        String sql = "SELECT * FROM funcionario WHERE id = ?";
+
+        try {
+            PreparedStatement stmt = this.conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                funcionario = new Funcionario();
+                funcionario.setId(rs.getInt("id"));
+                funcionario.setNomefunc(rs.getString("nomefunc"));
+
+                // Supondo que dataadmissao seja do tipo java.util.Date no bean
+                java.sql.Date data = rs.getDate("admissao");
+                funcionario.setDataadmissao(new java.util.Date(data.getTime()));
+
+                // Carregar empresa associada (mínimo necessário)
+                Empresa empresa = new Empresa();
+                empresa.setId(rs.getInt("empresaid"));
+                funcionario.setEmpresaid(empresa);
+            }
+        } catch (Exception e) {
+            System.out.println("Erro ao buscar funcionario: " + e.getMessage());
+        }
+
+        return funcionario;
+    }
+    
+    public List<Funcionario> getFuncionarios() {
+        String sql = "SELECT funcionario.id as id, nomefunc, empresaid, nomeempresa, admissao FROM funcionario "
+                + "INNER JOIN empresa ON funcionario.empresaid = empresa.id";
+        try {
+            PreparedStatement stmt = this.conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            List<Funcionario> lista = new ArrayList<>();
+            while (rs.next()) {
+                Funcionario funcionario = new Funcionario();
+                Empresa empresa = new Empresa();
+
+                funcionario.setId(rs.getInt("id"));
+                funcionario.setNomefunc(rs.getString("nomefunc"));
+                funcionario.setDataadmissao(rs.getDate("admissao"));
+                empresa.setId(rs.getInt("empresaid"));
+                empresa.setNomeEmpresa(rs.getString("nomeempresa"));
+                funcionario.setEmpresaid(empresa);
+
+                lista.add(funcionario);
+
+            }
+            return lista;
+        } catch (Exception e) {
+            return null;
+        }
+
+    }
+
 
     public void inserir(Funcionario funcionario) {
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");

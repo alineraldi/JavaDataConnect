@@ -35,4 +35,14 @@ public class Empresa {
         return this.nomeEmpresa;
     }
     
+    @Override
+    public boolean equals (Object objeto)
+    {
+        Empresa e = (Empresa) objeto;
+        if (this.id == e.getId()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

@@ -11,24 +11,24 @@ import javax.swing.table.TableRowSorter;
 
 public class FormRelatorioEmpresas extends javax.swing.JFrame {
 
-private void preencherTabela() {
+    private void preencherTabela() {
 
-    EmpresaDAO empresaDAO = new EmpresaDAO();
-    List<Empresa> listaEmpresas = empresaDAO.getEmpresa();
+        EmpresaDAO empresaDAO = new EmpresaDAO();
+        List<Empresa> listaEmpresas = empresaDAO.getEmpresa();
 
-    DefaultTableModel tabelaEmpresas = (DefaultTableModel) tblEmpresas.getModel();
-    tabelaEmpresas.setNumRows(0);
-    tblEmpresas.setRowSorter(new TableRowSorter(tabelaEmpresas));
+        DefaultTableModel tabelaEmpresas = (DefaultTableModel) tblEmpresas.getModel();
+        tabelaEmpresas.setNumRows(0);
+        tblEmpresas.setRowSorter(new TableRowSorter(tabelaEmpresas));
 
-    for (Empresa c : listaEmpresas) {
-        Object[] obj = new Object[]{
-            c.getId(),
-            c.getNomeEmpresa(),
-            c.getAreaAtuacao()
-        };
-        tabelaEmpresas.addRow(obj);
+        for (Empresa c : listaEmpresas) {
+            Object[] obj = new Object[]{
+                c.getId(),
+                c.getNomeEmpresa(),
+                c.getAreaAtuacao()
+            };
+            tabelaEmpresas.addRow(obj);
+        }
     }
-}
 
 
 

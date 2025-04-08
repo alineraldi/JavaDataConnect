@@ -33,10 +33,15 @@ public class FormFuncionario extends javax.swing.JFrame {
         lblNomeFunc = new javax.swing.JLabel();
         lblEmpresa = new javax.swing.JLabel();
         lblDataAdmissao = new javax.swing.JLabel();
+        lblPesquisar = new javax.swing.JLabel();
+        lblID = new javax.swing.JLabel();
         txtNomeFuncionario = new javax.swing.JTextField();
         txtDataAdmissao = new javax.swing.JTextField();
+        txtPesquisar = new javax.swing.JTextField();
         cmbEmpresa = new javax.swing.JComboBox();
         btnSalvar = new javax.swing.JButton();
+        btnPesquisar = new javax.swing.JButton();
+        txtID = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Formulário de Funcionários");
@@ -54,6 +59,12 @@ public class FormFuncionario extends javax.swing.JFrame {
         lblDataAdmissao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblDataAdmissao.setText("Data de admissão:");
 
+        lblPesquisar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblPesquisar.setText("ID do funcionário:");
+
+        lblID.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblID.setText("ID:");
+
         txtNomeFuncionario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtNomeFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,12 +79,34 @@ public class FormFuncionario extends javax.swing.JFrame {
             }
         });
 
+        txtPesquisar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPesquisarActionPerformed(evt);
+            }
+        });
+
         cmbEmpresa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
+            }
+        });
+
+        btnPesquisar.setText("Pesquisar");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
+
+        txtID.setEditable(false);
+        txtID.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIDActionPerformed(evt);
             }
         });
 
@@ -84,28 +117,48 @@ public class FormFuncionario extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(186, 186, 186)
                 .addComponent(lblTitle)
-                .addContainerGap(190, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(119, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblEmpresa, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblNomeFunc, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblDataAdmissao, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnSalvar)
-                        .addComponent(txtNomeFuncionario)
-                        .addComponent(cmbEmpresa, 0, 289, Short.MAX_VALUE))
-                    .addComponent(txtDataAdmissao, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(103, 103, 103))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(lblPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(btnPesquisar)
+                        .addGap(109, 109, 109))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblEmpresa, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblNomeFunc, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblDataAdmissao, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblID, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtNomeFuncionario)
+                                .addComponent(cmbEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtDataAdmissao, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSalvar)
+                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(97, 97, 97))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPesquisar)
+                    .addComponent(btnPesquisar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblID)
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNomeFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNomeFunc))
@@ -117,9 +170,9 @@ public class FormFuncionario extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDataAdmissao)
                     .addComponent(txtDataAdmissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(12, 12, 12)
                 .addComponent(btnSalvar)
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addGap(31, 31, 31))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -178,6 +231,28 @@ public class FormFuncionario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDataAdmissaoActionPerformed
 
+    private void txtPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisarActionPerformed
+        // Pegar o ID que será pesquisado
+        int id = Integer.parseInt(txtPesquisar.getText());
+        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+        
+        Funcionario f = funcionarioDAO.getFuncionario(id);
+        
+        // Preencher os campos
+        txtID.setText(String.valueOf(f.getId()));
+        txtNomeFuncionario.setText(f.getNomefunc());
+        txtDataAdmissao.setText(String.valueOf(f.getDataadmissao()));
+        cmbEmpresa.setSelectedItem(f.getEmpresaid());
+    }//GEN-LAST:event_txtPesquisarActionPerformed
+
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIDActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -214,14 +289,19 @@ public class FormFuncionario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox cmbEmpresa;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblDataAdmissao;
     private javax.swing.JLabel lblEmpresa;
+    private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblNomeFunc;
+    private javax.swing.JLabel lblPesquisar;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTextField txtDataAdmissao;
+    private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNomeFuncionario;
+    private javax.swing.JTextField txtPesquisar;
     // End of variables declaration//GEN-END:variables
 }
