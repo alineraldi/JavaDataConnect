@@ -313,9 +313,24 @@ public class TelaCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCategoriaActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        if(txtNome.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Nenhum filme selecionado para excluir.");
+        }
+        
+        String nomeFilme = txtNome.getText();
+        
+        FilmeDao filmeDao = new FilmeDao();
+        boolean sucesso = filmeDao.excluir(nomeFilme);
+        
+        if(sucesso) {
+            JOptionPane.showMessageDialog(this, "Filme excluído com sucesso.");
             txtNome.setText("");
             txtDataLancamento.setText("");
             txtCategoria.setText("");
+        } else {
+            JOptionPane.showMessageDialog(this, "Erro ao tentar excluir o filme.");
+        }
+
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed

@@ -105,6 +105,20 @@ public class FilmeDao {
         }
     }
     
+    public boolean excluir(String nome) {
+        String sql = "DELETE FROM filmes WHERE nome = ?";
+                
+        try {
+            PreparedStatement stmt = this.conn.prepareStatement(sql);
+            stmt.setString(1, nome);
+            int resultado = stmt.executeUpdate();
+            return resultado > 0;
+        } catch (SQLException sqle) {
+            System.out.println("Erro ao excluir filme: " + sqle.getMessage());
+            return false;
+        }
+    }
+    
     public void desconectar() {
         try {
             conn.close();
