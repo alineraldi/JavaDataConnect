@@ -1,4 +1,4 @@
-package conexao;
+package connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,7 +7,7 @@ public class Conexao {
     public Connection getConexao() {
         try {
            Connection conn = DriverManager.getConnection(
-                        "jdbc:mysql://localhost/exemplo4",
+                        "jdbc:mysql://localhost/alineraldi_atividade2",
                         "root",
                         "root"
            ); 
