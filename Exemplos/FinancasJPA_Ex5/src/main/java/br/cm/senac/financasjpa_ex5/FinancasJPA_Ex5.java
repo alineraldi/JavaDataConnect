@@ -1,12 +1,16 @@
 package br.cm.senac.financasjpa_ex5;
 
+import br.com.senac.financasjpa_ex5.persistencia.Conta;
+import br.com.senac.financasjpa_ex5.persistencia.ContaDAO;
 import br.com.senac.financasjpa_ex5.persistencia.Despesa;
 import br.com.senac.financasjpa_ex5.persistencia.DespesaDAO;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.Query;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.List;
 
 public class FinancasJPA_Ex5 {
 
@@ -57,14 +61,25 @@ public class FinancasJPA_Ex5 {
 //        manager.close();
 //        fabricaEntidade.close();
 
-        DespesaDAO despesaDao = new DespesaDAO();
+//        DespesaDAO despesaDao = new DespesaDAO();
+//        
+//        Despesa d = new Despesa();
+//        d.setDescricao("Compras de mercado");
+//        d.setValor(165.70);
+//        d.setData(LocalDate.of(2022, 11, 15));
+//        
+//        despesaDao.cadastrar(d);
         
-        Despesa d = new Despesa();
-        d.setDescricao("Compras de mercado");
-        d.setValor(165.70);
-        d.setData(LocalDate.of(2022, 11, 15));
-        
-        despesaDao.cadastrar(d);
+//        ContaDAO cDao = new ContaDAO();
+//        List<Conta> lista = cDao.listar();
+//        for (Conta c : lista) {
+//            System.out.println(c.getNome());
+//        }
+//        
+//        DespesaDAO despDao = new DespesaDAO();
+//        List<Despesa> despesas = despDao.listar();
+//        for (Despesa d : despesas)
+//            System.out.println(d.getId() + " - " + d.getDescricao());
     }
    
     
