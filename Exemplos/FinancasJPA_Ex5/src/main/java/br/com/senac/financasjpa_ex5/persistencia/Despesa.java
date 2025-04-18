@@ -1,4 +1,4 @@
-package br.cm.senac.financasjpa_ex5;
+package br.com.senac.financasjpa_ex5.persistencia;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
