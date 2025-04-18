@@ -44,4 +44,21 @@ public class DespesaDAO {
         }
         return despesas;
     }
+    
+    public void excluir(int id){
+        EntityManager em = JPAUtil.getEntityManager();
+        try {
+            Despesa d = em.find(Despesa.class, id);
+            if(d != null){
+                em.getTransaction().begin();
+                em.remove(d);
+                em.getTransaction().commit();
+            }
+        } catch(Exception e){
+            em.getTransaction().rollback();
+            throw e;
+        } finally {
+            JPAUtil.closeEntityManager();
+        }
+    }
 }

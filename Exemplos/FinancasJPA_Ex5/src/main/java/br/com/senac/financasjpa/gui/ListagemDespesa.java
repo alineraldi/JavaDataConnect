@@ -60,6 +60,7 @@ public class ListagemDespesa extends javax.swing.JFrame {
         txtFiltroDescricao = new javax.swing.JTextField();
         fmtDataFinal = new javax.swing.JTextField();
         fmtDataInicial = new javax.swing.JTextField();
+        btnExcluir = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDespesa = new javax.swing.JTable();
@@ -87,6 +88,13 @@ public class ListagemDespesa extends javax.swing.JFrame {
             }
         });
 
+        btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -95,6 +103,8 @@ public class ListagemDespesa extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnExcluir)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnPesquisar))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
@@ -127,7 +137,9 @@ public class ListagemDespesa extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(txtFiltroDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnPesquisar)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPesquisar)
+                    .addComponent(btnExcluir))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
@@ -200,6 +212,25 @@ public class ListagemDespesa extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_fmtDataFinalActionPerformed
 
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        try {
+            if(tblDespesa.getSelectedRow() >= 0){ // Verifica se há algo selecionado na tabela
+                // Obtem o valor da coluna id da linha selecionada
+                String id = (String)tblDespesa.getValueAt(tblDespesa.getSelectedRow(), 0);
+                int resposta = JOptionPane.showConfirmDialog(this, "Deseja mesmo excluir o registro?" + id + "?");
+                if (resposta == 0) {
+                    DespesaDAO despesaDao = new DespesaDAO();
+                    despesaDao.excluir(Integer.parseInt(id));
+                    JOptionPane.showMessageDialog(this, "Registro excluído com sucesso");
+                    // Refazendo a pesquisa para atualizar a tabela na tela
+                    btnPesquisarActionPerformed(evt);
+                }
+            }
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(this, "Ocorreu uma falha:\n" + e.getMessage());
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -236,6 +267,7 @@ public class ListagemDespesa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JTextField fmtDataFinal;
     private javax.swing.JTextField fmtDataInicial;
