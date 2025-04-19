@@ -1,5 +1,6 @@
 package br.cm.senac.financasjpa_ex5;
 
+import br.com.senac.financasjpa.gui.Principal;
 import br.com.senac.financasjpa_ex5.persistencia.Conta;
 import br.com.senac.financasjpa_ex5.persistencia.ContaDAO;
 import br.com.senac.financasjpa_ex5.persistencia.Despesa;
@@ -80,7 +81,11 @@ public class FinancasJPA_Ex5 {
 //        List<Despesa> despesas = despDao.listar();
 //        for (Despesa d : despesas)
 //            System.out.println(d.getId() + " - " + d.getDescricao());
-    }
-   
     
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Principal().setVisible(true);
+            }
+        });
+    }  
 }

@@ -61,4 +61,28 @@ public class DespesaDAO {
             JPAUtil.closeEntityManager();
         }
     }
+    
+    public Despesa obter(int id){ // O método obter() será útil para recuperar o registro selecionado na tela de listagem de despesas.
+        EntityManager  em = JPAUtil.getEntityManager();
+        try {
+            return em.find(Despesa.class, id);
+        } finally {
+            JPAUtil.closeEntityManager();
+        }
+    }
+    
+    public void atualizar(Despesa d){ // é responsável por salvar as informações no banco de dados usando o método merge() de EntityManager
+        EntityManager em = JPAUtil.getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.merge(d);
+            em.getTransaction().commit();
+        } catch(Exception e){
+            em.getTransaction().rollback();
+            throw e;
+        }
+        finally {
+            JPAUtil.closeEntityManager();
+        }
+    }
 }

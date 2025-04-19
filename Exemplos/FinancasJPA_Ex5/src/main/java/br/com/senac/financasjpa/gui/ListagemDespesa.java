@@ -61,6 +61,7 @@ public class ListagemDespesa extends javax.swing.JFrame {
         fmtDataFinal = new javax.swing.JTextField();
         fmtDataInicial = new javax.swing.JTextField();
         btnExcluir = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDespesa = new javax.swing.JTable();
@@ -95,6 +96,13 @@ public class ListagemDespesa extends javax.swing.JFrame {
             }
         });
 
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -103,6 +111,8 @@ public class ListagemDespesa extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEditar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnExcluir)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnPesquisar))
@@ -139,7 +149,8 @@ public class ListagemDespesa extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPesquisar)
-                    .addComponent(btnExcluir))
+                    .addComponent(btnExcluir)
+                    .addComponent(btnEditar))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
@@ -217,7 +228,7 @@ public class ListagemDespesa extends javax.swing.JFrame {
             if(tblDespesa.getSelectedRow() >= 0){ // Verifica se há algo selecionado na tabela
                 // Obtem o valor da coluna id da linha selecionada
                 String id = (String)tblDespesa.getValueAt(tblDespesa.getSelectedRow(), 0);
-                int resposta = JOptionPane.showConfirmDialog(this, "Deseja mesmo excluir o registro?" + id + "?");
+                int resposta = JOptionPane.showConfirmDialog(this, "Deseja mesmo excluir o registro " + id + " ?");
                 if (resposta == 0) {
                     DespesaDAO despesaDao = new DespesaDAO();
                     despesaDao.excluir(Integer.parseInt(id));
@@ -230,6 +241,22 @@ public class ListagemDespesa extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Ocorreu uma falha:\n" + e.getMessage());
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        try{
+            CadastroDespesa cadastro = new CadastroDespesa();
+            
+            if(tblDespesa.getSelectedRow() >= 0){
+                String id = (String)tblDespesa.getValueAt(tblDespesa.getSelectedRow(), 0);
+                DespesaDAO despesaDao = new DespesaDAO();
+                Despesa despesaSelecionada = despesaDao.obter(Integer.parseInt(id));
+                cadastro.preencheEdicao(despesaSelecionada);
+                cadastro.setVisible(true);
+            }
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(this, "Ocorreu uma falha:\n" + e.getMessage());
+        }
+    }//GEN-LAST:event_btnEditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -267,6 +294,7 @@ public class ListagemDespesa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JTextField fmtDataFinal;
