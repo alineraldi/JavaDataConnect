@@ -122,8 +122,6 @@ public class Login extends javax.swing.JFrame {
         // Atribuimos os valores Login e Senha baseado nos dados dos componentes JTextField
         usuario.setLogin(txtLogin.getText());
         usuario.setSenha(Criptografia.getMD5(txtSenha.getText()));
-        
-        System.out.println("A senha em MD5 é: " + usuario.getSenha());
 
         // Usando a validação insegura
         usuario = UsuarioBD.validarUsuarioSeguro(usuario);
