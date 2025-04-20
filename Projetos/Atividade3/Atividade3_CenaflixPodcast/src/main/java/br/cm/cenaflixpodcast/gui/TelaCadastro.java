@@ -223,6 +223,7 @@ public class TelaCadastro extends javax.swing.JFrame {
             podcastDao.cadastrar(p);
             
             JOptionPane.showMessageDialog(this, "Boa! Podcast cadastrado com sucesso.");
+            this.dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Ocorreu uma falha! Tente novamente.");
         }
