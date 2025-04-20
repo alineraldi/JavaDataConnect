@@ -26,8 +26,8 @@ public class PodcastDAO {
         EntityManager em = JPAUtil.getEntityManager();
         List<Podcast> podcasts = null;
         try {
-            String textoQuery = "SELECT d FROM Podcast p "+
-                    "WHERE (:produtor is null OR p.produtor LIKE :produtor";
+            String textoQuery = "SELECT p FROM Podcast p "+
+                    "WHERE (:produtor is null OR p.produtor LIKE :produtor)";
             Query consulta = em.createQuery(textoQuery);
             
             consulta.setParameter("produtor", filtroProdutor.isEmpty() ? null : "%" + filtroProdutor + "%");
