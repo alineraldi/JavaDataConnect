@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://postimg.cc/t7hNhd2d" alt="Java-Data-Connect">
+  <img src="https://i.postimg.cc/XNP16Q5P/Java-Data-Connect.png" alt="Java-Data-Connect">
 </div>
 
 ###
