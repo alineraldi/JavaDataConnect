@@ -1,5 +1,5 @@
 <div align="center">
-  [Java-Data-Connect.png](https://postimg.cc/t7hNhd2d)[Java-Data-Connect.png](https://postimg.cc/t7hNhd2d)
+  <img src="https://postimg.cc/t7hNhd2d" alt="Java-Data-Connect">
 </div>
 
 ###
